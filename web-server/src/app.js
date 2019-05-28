@@ -37,7 +37,7 @@ app.get('/help', (req, res) => {
     res.render('help', {
         title: 'Help Page',
         message: 'This is the help landing page',
-        name: 'RoboFarm'
+        name: 'RoboFarm '
     })
 });
 
@@ -47,6 +47,25 @@ app.get('/weather', (req, res) => {
         forecast: 25
     })
 });
+
+
+app.get('/help/*', (req, res) => {
+    res.render('404', {
+        title: '404 Page Not Found',
+        name: 'RoboFarm',
+        errorMessage: 'Help article not found.'
+    })
+});
+
+
+app.get('*', (req, res) => {
+    res.render('404', {
+        title: '404 Page Not Found',
+        name: 'RoboFarm',
+        errorMessage: 'Probably not what you were looking for.'
+    })
+});
+
 
 app.listen(3000, () => {
     console.log('Server is up on port 3000.')
